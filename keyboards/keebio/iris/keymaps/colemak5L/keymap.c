@@ -2,8 +2,9 @@
 
 #ifdef CONSOLE_ENABLE
 #include "print.h"
-#endif
+#endif 
 #include <keycodes.h>
+#include "keymap_german.h"
 
 /* THIS FILE WAS GENERATED!
  *
@@ -17,52 +18,15 @@ enum layers
     _NAV,
     _NUM,
     _FUN,
-    _SYM,
-    _EMT,
-    _WIN,
+    _GAM,
 };
 
-// typedef enum {
-//     TD_NONE,
-//     TD_UNKNOWN,
-//     TD_SINGLE_TAP,
-//     TD_SINGLE_HOLD,
-//     TD_DOUBLE_TAP,
-//     TD_DOUBLE_HOLD,
-//     TD_DOUBLE_SINGLE_TAP, // Send two single taps
-//     TD_TRIPLE_TAP,
-//     TD_TRIPLE_HOLD
-// } td_state_t;
-
-// typedef struct {
-//     bool is_press_action;
-//     td_state_t state;
-// } td_tap_t;
-
-// Tap dance enum
-// enum {
-//     D_GUI_L1,
-//     D_LALT_L2,
-//     D_ENT_L3,
-//     D_SPC_L4,
-//     D_RALT_L5,
-//     D_APP_L6
-// };
-
-// td_state_t cur_dance(tap_dance_state_t *state);
-
-// // For the x tap dance. Put it here so it can be used in any keymap
-// void x_finished(tap_dance_state_t *state, void *user_data);
-// void x_reset(tap_dance_state_t *state, void *user_data);
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[_COLEMAK] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_DEL, KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G, KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC, KC_LCTL, KC_A, KC_R, KC_S, KC_T, KC_D, KC_H, KC_N, KC_E, KC_I, KC_O, KC_QUOT, SC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_HOME, KC_END, KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, SC_RSPC, LT(1,KC_LGUI), LT(2,OSM(MOD_LALT)), LT(3,KC_ENT), LT(4,KC_SPC), LT(5,OSM(MOD_RALT)), LT(6,KC_APP)),
-	[_NAV]     = LAYOUT(QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, EE_CLR, KC_NO, KC_PSCR, KC_UNDO, KC_AGIN, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LCTL(KC_C), KC_BSPC, KC_UP, KC_DEL, KC_INS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LCTL(KC_V), KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, DB_TOGG, KC_NO, KC_NO, KC_NO, KC_SLEP, KC_PWR, KC_NO, KC_NO, LCTL(KC_X), KC_ENT, RCS(KC_ENT), LCTL(KC_ENT), KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
-	[_NUM]     = LAYOUT(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_LT, KC_LPRN, KC_RPRN, KC_GT, KC_CIRC, KC_EXLM, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PPLS, KC_P7, KC_P8, KC_P9, KC_PMNS, KC_COLN, KC_NO, KC_NO, RALT(KC_Q), RALT(KC_P), RALT(KC_Y), KC_NO, KC_PAST, KC_P4, KC_P5, KC_P6, KC_PSLS, KC_AT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_BSPC, KC_AMPR, KC_P1, KC_P2, KC_P3, KC_EQL, KC_PERC, KC_NO, KC_TRNS, KC_NO, KC_PENT, KC_PDOT, KC_P0),
-	[_FUN]     = LAYOUT(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_NO, KC_HOME, KC_UP, KC_END, KC_NO, KC_NO, KC_NO, KC_F5, KC_F6, KC_F7, KC_F8, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO),
-	[_SYM]     = LAYOUT(KC_PIPE, KC_UNDS, KC_CIRC, KC_LT, KC_GT, KC_PMNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_AT, KC_DLR, KC_EXLM, KC_LCBR, KC_RCBR, KC_ASTR, KC_NO, RCS(KC_ENT), LCTL(KC_C), KC_HOME, KC_BSPC, KC_END, KC_HASH, KC_DQUO, KC_QUOT, KC_LPRN, KC_RPRN, KC_EQL, KC_NO, KC_ENT, LCTL(KC_V), KC_LEFT, KC_UP, KC_RGHT, KC_PCMM, KC_SCLN, KC_PDOT, KC_LBRC, KC_RBRC, KC_SLSH, KC_BSLS, KC_NO, KC_NO, LCTL(KC_ENT), LCTL(KC_X), LSFT(KC_LEFT), KC_DOWN, LSFT(KC_RGHT), KC_AMPR, KC_PLUS, KC_NO, KC_TRNS, KC_NO, KC_NO),
-	[_EMT]     = LAYOUT(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO),
-	[_WIN]     = LAYOUT(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MNXT, KC_MSTP, KC_VOLU, KC_WSTP, KC_NO, KC_NO, KC_NO, KC_NO, RGB_HUI, RGB_SAI, RGB_VAI, KC_NO, KC_MPRV, KC_MPLY, KC_VOLD, KC_WREF, KC_NO, KC_NO, KC_NO, KC_NO, RGB_HUD, RGB_SAD, RGB_VAD, KC_NO, KC_NO, KC_NO, KC_NO, KC_EXEC, KC_NO, KC_WSCH, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS)
+    [_COLEMAK] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_DEL, KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_G, KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPC, SC_LSPO, KC_A, KC_R, KC_S, KC_T, KC_D, KC_H, KC_N, KC_E, KC_I, KC_O, SC_RSPC, LCTL_T(KC_LCBR), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_HOME, KC_END, KC_K, KC_M, KC_COMM, KC_DOT, KC_QUOT, LALT_T(KC_RCBR), LT(1,KC_LGUI), LT(2,OSM(MOD_LALT)), KC_ENT, KC_SPC, LT(3,OSM(MOD_RALT)), LT(4,KC_APP)),
+    [_NAV] = LAYOUT(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO, KC_NO, KC_PSCR, KC_UP, KC_NO, KC_NO, KC_NO, KC_NO, KC_F5, KC_F6, KC_F7, KC_F8, KC_NO, CW_TOGG, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, KC_NO, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, QK_MACRO_0, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
+    [_NUM] = LAYOUT(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TAB, KC_DQUO, KC_PERC, KC_LT, KC_GT, KC_COLN, KC_PPLS, KC_P7, KC_P8, KC_P9, KC_PMNS, KC_NO, KC_LSFT, KC_DLR, KC_HASH, KC_LPRN, KC_RPRN, KC_AT, KC_PAST, KC_P4, KC_P5, KC_P6, KC_PSLS, KC_RSFT, KC_NO, KC_PIPE, KC_TILD, KC_CIRC, KC_EXLM, KC_PERC, KC_NO, KC_BSPC, KC_AMPR, KC_P1, KC_P2, KC_P3, KC_EQL, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_PENT, KC_PDOT, KC_P0),
+    [_FUN] = LAYOUT(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_VOLD, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU, KC_NO, KC_LSFT, KC_NO, LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_NO, KC_NO, RALT(KC_Q), RALT(KC_P), RALT(KC_Y), KC_NO, KC_RSFT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO),
+    [_GAM] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_NO, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Z, KC_U, KC_I, KC_O, KC_P, KC_BSPC, KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, LALT(KC_P), KC_RSFT, KC_LCTL, KC_Y, KC_X, KC_C, KC_V, KC_B, KC_NO, KC_NO, KC_M, KC_N, KC_SCLN, KC_DOT, KC_MINS, KC_RCTL, QK_LLCK, KC_NO, KC_SPC, KC_ENT, KC_NO, KC_TRNS)
 };
 
 // bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
@@ -78,20 +42,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     for (uint8_t i = led_min; i < led_max; i++) {
         switch(get_highest_layer(layer_state|default_layer_state)) {
-             case _WIN:
-                rgb_matrix_set_color(i, RGB_RED); // Red
-                break;
-            case _EMT:
-                rgb_matrix_set_color(i, RGB_BLACK); // White
-                break;
-            case _SYM:
+            case _GAM:
                 rgb_matrix_set_color(i, RGB_PURPLE); // Violet
                 break;
              case _FUN:
                 rgb_matrix_set_color(i, RGB_CORAL); // Medium Blue
                 break;
             case _NUM:
-                rgb_matrix_set_color(i, RGB_CYAN); // Ice Blue
+                rgb_matrix_set_color(i, RGB_BLUE); // Ice Blue
                 break;
             case _NAV:
                 rgb_matrix_set_color(i, RGB_GREEN); // Green
@@ -107,77 +65,24 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     return false;
 }
 
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     #ifdef CONSOLE_ENABLE
-//         // Keylogger
-//         const bool is_combo = record->event.type == COMBO_EVENT;
-//         uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
-//              keycode,
-//              is_combo ? 254 : record->event.key.row,
-//              is_combo ? 254 : record->event.key.col,
-//              get_highest_layer(layer_state),
-//              record->event.pressed,
-//              get_mods(),
-//              get_oneshot_mods(),
-//              record->tap.count
-//              );
-//     #endif
-//     // switch (keycode) {
-//     //     case LT(6,KC_APP):
-//     //   if (record->event.pressed) {
-//     //         rgb_matrix_set_color_all(0xff, 0x00, 0x00); // Red
-//     //         uprintf("_WIN");
-//     //         // layer = _WIN;
-//     //   } else {
-//     //     rgb_matrix_set_color_all(0xf6, 0xff, 0x03); // Golden
-//     //   }
-//     //         break;
-//     //     case LT(5,KC_RALT):
-//     //   if (record->event.pressed) {
-//     //         rgb_matrix_set_color_all(0xff, 0xff, 0xff); // White
-//     //         uprintf("_EMT");
-//     //         // layer = _EMT;
-//     //   }
-//     //         break;
-//     //     case LT(4,KC_SPC):
-//     //   if (record->event.pressed) {
-//     //         rgb_matrix_set_color_all(0x8a, 0x17, 0xff); // Violet
-//     //         uprintf("_SYM");
-//     //         // layer = _SYM;
-//     //   }
-//     //         break;
-//     //     case LT(3,KC_ENT):
-//     //   if (record->event.pressed) {
-//     //         set_all_rgb(0x07, 0x59, 0xff); // Medium Blue
-//     //         uprintf("_FUN");
-//     //         // layer = _FUN;
-//     //   }
-//     //         break;
-//     //     case LT(2,KC_LALT):
-//     //         set_all_rgb(0x0a, 0xff, 0xf1); // Ice Blue
-//     //         uprintf("_NUM");
-//     //         // layer = _NUM;
-//     //         break;
-//     //     case LT(1,KC_LGUI):
-//     //         set_all_rgb(0x19, 0xff, 0x01); // Green
-//     //         uprintf("_NAV");
-//     //         // layer = _NAV;
-//     //         break;
-//     //     case KC_T:
-//     //             set_all_rgb(0x0a, 0xff, 0xf1); // Ice Bluettttarst 
-//     //         uprintf("_COLEMAK");
-//     //             // layer = _COLEMAK;
-//     //             break;
-//     //     default:
-//     //         set_all_rgb(0xf6, 0xff, 0x03); // Golden
-//     //         uprintf("_COLEMAK");
-//     //         // layer = _COLEMAK;
-//     //         break;
-//     // }
-//     return true;
-// }
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch (keycode) {
+            case QK_MACRO_0:
+              SEND_STRING(SS_LGUI("."));
+            return false;
+            case QK_MACRO_1:
+              SEND_STRING(SS_LGUI("l")); // WIN+L = lock Computer
+            return false;
+            case QK_MACRO_2:
+              SEND_STRING(SS_LGUI("v")); // WIN+V = Paste Cycle
+            return false;
+        }
+        }
+    }
 
-// Tap dance
+    return true;
+}
 
 
 
