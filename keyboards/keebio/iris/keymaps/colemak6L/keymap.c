@@ -1,10 +1,10 @@
 #include QMK_KEYBOARD_H
+#include "elpekenin/ledmap.h"
 
 #ifdef CONSOLE_ENABLE
 #include "print.h"
 #endif 
 #include <keycodes.h>
-#include "keymap_german.h"
 
 /* THIS FILE WAS GENERATED!
  *
@@ -37,6 +37,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_GAM] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_NO, KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Z, KC_U, KC_I, KC_O, KC_P, KC_BSPC, KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, LALT(KC_P), KC_RSFT, KC_LCTL, KC_Y, KC_X, KC_C, KC_V, KC_B, KC_NO, KC_NO, KC_M, KC_N, KC_SCLN, KC_DOT, KC_MINS, KC_RCTL, QK_LLCK, KC_NO, KC_SPC, KC_ENT, KC_NO, KC_TRNS)
    };
 
+const ledmap_color_t PROGMEM ledmap[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_COLEMAK] = LAYOUT(
+        RED,     YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,                    YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  ORANGE,
+        ORANGE,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,                    YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  ORANGE,
+        ORANGE,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,                    YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  ORANGE,
+        ORANGE,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  ORANGE,
+                                            YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW,  YELLOW
+    ),
+    [_NAV] = LAYOUT(
+        BLACK,  CYAN,  CYAN,  CYAN,  BLACK,  BLACK,                  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+        BLACK,  CYAN,  CYAN,  CYAN,  ORANGE, BLACK,                  BLACK,  BLUE,   BLACK,  BLACK,  BLACK,  BLACK,
+        BLACK,  CYAN,  CYAN,  CYAN,  BLACK,  BLACK,                  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,
+        BLACK,  CYAN,  CYAN,  CYAN,  BLUE,   BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  BLUE,   BLACK,  BLACK,
+                                   YELLOW,   BLACK,  BLACK,  BLACK,  BLACK,  BLACK
+    ),
+    [_NUM] = LAYOUT(
+        BLACK,   BLACK,  BLACK,       BLACK,   BLACK,   BLACK,                       BLACK,  BLACK,  BLACK,  BLACK,  BLACK,  ORANGE,
+        ORANGE,  ROSE,   CHARTREUSE,  ORANGE,  ORANGE,  CHARTREUSE,                  VIOLET,  BLUE,  BLUE,  BLUE,  VIOLET,  ORANGE,
+        ORANGE,  ROSE,   CHARTREUSE,  ORANGE,  ORANGE,  CHARTREUSE,                  VIOLET,  BLUE,  BLUE,  BLUE,  VIOLET,  ORANGE,
+        ORANGE,  ROSE,   GREEN,       GREEN,   GREEN,   CHARTREUSE,  BLACK,  BLACK,  MAGENTA,  BLUE,  BLUE,  BLUE,  MAGENTA,  ORANGE,
+                                               BLACK,   YELLOW,  BLACK,           BLACK,  BLACK,  BLACK
+    ),
+    [_SRT] = LAYOUT(
+        BLACK,   BLACK,   BLACK,   BLACK,  BLACK,  BLACK,                    BLACK,  BLACK,    BLACK,   BLACK,    BLACK,  BLACK,
+        ORANGE,  YELLOW,  BLACK,   BLACK,  BLACK,  BLACK,                    BLACK,  SPRING,   BLUE,    SPRING,   BLACK,  BLACK,
+        ORANGE,  YELLOW,  YELLOW,  BLACK,  BLACK,  BLACK,                    BLACK,  BLUE,     BLUE,    BLUE,     BLACK,  BLACK,
+        ORANGE,  YELLOW,  BLACK,   BLACK,  BLACK,  BLACK,   BLACK,  BLACK,   BLACK,  MAGENTA,  VIOLET,  MAGENTA,  BLACK,  BLACK,
+                                           BLACK,  BLACK,  YELLOW,  BLACK,  BLACK,   BLACK
+    ),
+    [_FUN] = LAYOUT(
+        BLACK,  BLACK,  BLACK,    BLACK,   BLACK,   BLACK,                  BLACK,  BLACK,   BLACK,   BLACK,   BLACK,  RED,
+        BLACK,  BLACK,  BLACK,    BLACK,   BLACK,   BLACK,                  AZURE,  ROSE,    VIOLET,  ROSE,    AZURE,  BLACK,
+        ORANGE,  BLACK,  VIOLET,  VIOLET,  VIOLET,  BLACK,                  BLACK,  YELLOW,  YELLOW,  YELLOW,  BLACK,  ORANGE,
+        BLACK,  BLACK,  BLACK,    BLACK,   BLACK,   BLACK,  BLACK,  BLACK,  BLACK,  BLACK,   BLACK,   BLACK,   BLACK,  BLACK,
+                                           BLACK,   BLACK,  BLACK,  BLACK,  YELLOW,  BLACK
+    ),
+    [_GAM] = LAYOUT(
+        ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,                    ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,
+        ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,                    ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,
+        ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,                    ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,
+        ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  ORANGE,
+                                            VIOLET,  ORANGE,  ORANGE,  ORANGE,  ORANGE,  YELLOW
+    )
+ };
+
 // bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 //     if (host_keyboard_led_state().caps_lock) {
 //         RGB_MATRIX_INDICATOR_SET_COLOR(5, 255, 255, 255); // assuming caps lock is at led #5
@@ -47,34 +92,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // }
 
 // https://docs.qmk.fm/#/feature_rgb_matrix?id=functions
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    for (uint8_t i = led_min; i < led_max; i++) {
-        switch(get_highest_layer(layer_state|default_layer_state)) {
-            case _GAM:
-                rgb_matrix_set_color(i, RGB_PURPLE); // Violet
-                break;
-             case _FUN:
-                rgb_matrix_set_color(i, RGB_CORAL); // Medium Blue
-                break;
-            case _SRT:
-                rgb_matrix_set_color(i, RGB_RED); // Red
-                break;
-            case _NUM:
-                rgb_matrix_set_color(i, RGB_BLUE); // Ice Blue
-                break;
-            case _NAV:
-                rgb_matrix_set_color(i, RGB_GREEN); // Green
-                break;
-            case _COLEMAK:
-                rgb_matrix_set_color(i, RGB_YELLOW); // Golden
-                break;
-            default:
-                rgb_matrix_set_color(i, RGB_YELLOW); // Golden
-                break;
-        }
-    }
-    return false;
-}
+// bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+//     for (uint8_t i = led_min; i < led_max; i++) {
+//         switch(get_highest_layer(layer_state|default_layer_state)) {
+//             case _GAM:
+//                 rgb_matrix_set_color(i, RGB_PURPLE); // Violet
+//                 break;
+//              case _FUN:
+//                 rgb_matrix_set_color(i, RGB_CORAL); // Medium Blue
+//                 break;
+//             case _SRT:
+//                 rgb_matrix_set_color(i, RGB_BLACK); // BLACK
+//                 break;
+//             case _NUM:
+//                 rgb_matrix_set_color(i, RGB_BLUE); // Ice Blue
+//                 break;
+//             case _NAV:
+//                 rgb_matrix_set_color(i, RGB_GREEN); // Green
+//                 break;
+//             case _COLEMAK:
+//                 rgb_matrix_set_color(i, RGB_YELLOW); // Golden
+//                 break;
+//             default:
+//                 rgb_matrix_set_color(i, RGB_YELLOW); // Golden
+//                 break;
+//         }
+//     }
+//     return false;
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
