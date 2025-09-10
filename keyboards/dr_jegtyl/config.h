@@ -5,13 +5,13 @@
 
 #define EE_HANDS // Store which side I am in EEPROM
 
-/* Keyboard matrix assignments */
-#define MATRIX_ROW_PINS { GP29, GP28, GP27, GP26, GP22 }
-#define MATRIX_COL_PINS { GP2, GP3, GP4, GP5, GP6, GP7, GP8, GP9 }
+// /* Keyboard matrix assignments */
+// #define MATRIX_ROW_PINS { GP3, GP4, GP5, GP6, GP7, GP8, GP9 }
+// #define MATRIX_COL_PINS { GP10, GP25, GP24, GP23, GP22, GP21, GP20 }
 
 /* Encoders */
-#define ENCODERS_PAD_A { GP21, GP20 }
-#define ENCODERS_PAD_B { GP18, GP19 }
+// #define ENCODERS_PAD_A { GP21, GP20 }
+// #define ENCODERS_PAD_B { GP18, GP19 }
 
 /* Trackball */
 #define SPI_DRIVER SPID0
