@@ -1,0 +1,37 @@
+{
+    "userspace_version": "1.1",
+    "build_targets": [
+        [
+            "jegkb/drjegtyl_4x6",
+            "default",
+            {
+                "MAKECMDGOALS": "uf2-split-left",
+                "TARGET": "drjegtyl_4x6_default_left"
+            }
+        ],
+        [
+            "jegkb/drjegtyl_4x6",
+            "default",
+            {
+                "MAKECMDGOALS": "uf2-split-right",
+                "TARGET": "drjegtyl_4x6_default_right"
+            }
+        ],
+        [
+            "jegkb/drjegtyl_4x6",
+            "via",
+            {
+                "MAKECMDGOALS": "uf2-split-left",
+                "TARGET": "drjegtyl_4x6_via_left"
+            }
+        ],
+        [
+            "jegkb/drjegtyl_4x6",
+            "via",
+            {
+                "MAKECMDGOALS": "uf2-split-right",
+                "TARGET": "drjegtyl_4x6_via_right"
+            }
+        ]
+    ]
+}
